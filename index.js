@@ -187,8 +187,8 @@ function editMetadatas(table){
     return finalResult;
   }
   // vars
-  const ipfsStringHash = 'ipfs://QmS3ucPnUw8DLnS3K6qzNgKZuEtYSUyJBKLEaguBWbEGJa/';
-  const projectHomepage = 'https://agents-in-the-dark.github.io/in-the-dark/';
+  const ipfsStringHash = 'https://raw.githubusercontent.com/elbert-git/LettersShapesAndNumbers/assetCreation/output/imageOutput/';
+  const projectHomepage = 'https://elbert-git.github.io/LettersShapesAndNumbers/';
   const maxCount = (()=>{const i = new TableIndex(table); return i.getMaxNumber()})();
   // --- metadata editing loop
   for (let index = 0; index < maxCount ; index++) {
@@ -200,7 +200,7 @@ function editMetadatas(table){
     obj=JSON.parse(readData);
     // --- edit json
     // image url
-    obj.image = ipfsStringHash + indexString + '.png';
+    obj.image = ipfsStringHash + indexString.padStart(4,'0') + '.png';
     // project home page
     obj.external_url = projectHomepage;
     // change to full sentence
@@ -231,10 +231,10 @@ console.log(tableOfTraitsAndVariations);
 // writeMetadatas(tableOfTraitsAndVariations, templateObj);
 
 // --- generate images
-const layerOrder = [2, 0, 1];
-generateImages(tableOfTraitsAndVariations, layerOrder);
+// const layerOrder = [2, 0, 1];
+// generateImages(tableOfTraitsAndVariations, layerOrder);
 
 // --- editMetadatas
-// editMetadatas(tableOfTraitsAndVariations);
+editMetadatas(tableOfTraitsAndVariations);
 
 

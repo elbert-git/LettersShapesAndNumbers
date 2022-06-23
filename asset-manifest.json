@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/LettersShapesAndNumbers/static/css/main.fe0faf71.css",
+    "main.js": "/LettersShapesAndNumbers/static/js/main.567822a2.js",
+    "index.html": "/LettersShapesAndNumbers/index.html",
+    "main.fe0faf71.css.map": "/LettersShapesAndNumbers/static/css/main.fe0faf71.css.map",
+    "main.567822a2.js.map": "/LettersShapesAndNumbers/static/js/main.567822a2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe0faf71.css",
+    "static/js/main.567822a2.js"
+  ]
+}

@@ -233,7 +233,7 @@ function createNullMetadatas(table, template){
    // add project homepage and image urls
    objToWrite.external_url = "https://elbert-git.github.io/LettersShapesAndNumbers/";
    // image url
-   objToWrite.
+   objToWrite.image = "https://raw.githubusercontent.com/elbert-git/LettersShapesAndNumbers/assetCreation/output/unrevealedImage.png";
    // write object to folder
    let stringJson = JSON.stringify(objToWrite);
    fs.writeFileSync('./output/unrevealedMetdatas/'+count, stringJson);

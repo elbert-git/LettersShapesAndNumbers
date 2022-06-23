@@ -214,6 +214,34 @@ function editMetadatas(table){
     fs.writeFileSync('./output/metadataOutput/' +index.toString(), JSON.stringify(obj));
   }
 }
+function createNullMetadatas(table, template){
+  // create index from table
+  let arrayIndex = new TableIndex(table);
+  // create looping variables
+  let count = 0;
+  let maxCount = arrayIndex.getMaxNumber();
+  // while index is not at end write metadatas
+  while(count < maxCount){
+   console.log(count, maxCount);
+   // --- vars
+   let countString = count.toString().padStart(4, '0');
+   const traitNameArray = Object.keys(table);
+   // --- clone template object
+   let objToWrite = {...templateObj};
+   // write ids
+   objToWrite.name = objToWrite.name + " #" + (count+1).toString().padStart(4,'0');
+   // add project homepage and image urls
+   objToWrite.external_url = "https://elbert-git.github.io/LettersShapesAndNumbers/";
+   // image url
+   objToWrite.
+   // write object to folder
+   let stringJson = JSON.stringify(objToWrite);
+   fs.writeFileSync('./output/unrevealedMetdatas/'+count, stringJson);
+   // iterate variables
+   count++;
+   arrayIndex.addOne();
+  }
+}
 
 // --- --- --- execution
 // --- create table
@@ -234,7 +262,16 @@ console.log(tableOfTraitsAndVariations);
 // const layerOrder = [2, 0, 1];
 // generateImages(tableOfTraitsAndVariations, layerOrder);
 
-// --- editMetadatas
-editMetadatas(tableOfTraitsAndVariations);
+// // --- editMetadatas
+// editMetadatas(tableOfTraitsAndVariations);
 
+// --- create unrevealed metadata
+const templateObj = {
+ description: "This is kewl",
+ name: "Letters Shapes And Numbers",
+ image: "",
+ external_url:"https://elbert-git.github.io/LettersShapesAndNumbers/",
+ attributes: []
+}
+createNullMetadatas(tableOfTraitsAndVariations, templateObj);
 

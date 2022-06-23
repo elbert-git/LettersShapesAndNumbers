@@ -31,6 +31,7 @@ class Contract{
     const contract = await new this.web3.eth.Contract(contractAbi, contractAddress);
     this.contract = contract;
     console.log(contract);
+    this.init = true;
   }
    
   async getContractVariables(){
@@ -48,6 +49,18 @@ class Contract{
     if(obj.whiteListMintsLeft < 1){obj.whiteListMintsLeft = 0}
     this.contractVariables = obj;
     if(this.onUpdateContractVar != null){this.onUpdateContractVar(this.contractVariables)}
+  }
+
+  async getUserVariables(address){
+    let obj = {...this.contractVariables};
+    const userMinted = await this.contract.methods.balanceOf(address).call();
+    obj.userMinted = userMinted;
+    this.contractVariables = obj;
+    if(this.onUpdateContractVar != null){this.onUpdateContractVar(this.contractVariables)}
+  }
+  
+  async mint(address, proof){
+    await this.contract.methods.mint(1, proof).send({from:address, value: 0});
   }
 }
 

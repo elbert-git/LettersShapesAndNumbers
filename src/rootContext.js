@@ -23,6 +23,7 @@ export default function RootContext({children}) {
     contractVars: contractVars,
     walletModule: wallet,
     walletAddress: currentWallet,
+    contractModule: contract
   };
    
   // --- load start up modules before rendering stuff
@@ -39,7 +40,6 @@ export default function RootContext({children}) {
     }
     load();
   },[])
-   
 
   return (
     <rootContext.Provider className="App" value={contextData}>

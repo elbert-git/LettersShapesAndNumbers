@@ -1,0 +1,54 @@
+/* -------------  My css Stuff */
+/* debug */
+.debugRedLine              {outline: solid 3px rgba(255, 0, 0, 0.3);}
+
+/* removing default spacings */
+*                          {padding: 0;margin: 0;}
+
+/* flex Classes */
+.flex                      {display: flex}
+.flexColumn                {flex-direction: column;}
+/* justify */
+.flexJustifyCenter         {justify-content: center;}
+.flexJustifyStart          {justify-content: flex-start;}
+.flexJustifyEnd            {justify-content: flex-end;}
+.flexJustifyBetween        {justify-content: space-between;}
+.flexJustifyAround         {justify-content: space-around;}
+.flexJustifyEvenly         {justify-content: space-evenly;}
+/* alignment */
+.flexAlignCenter           {align-items: center;}
+.flexAlignStart            {align-items: flex-start;}
+.flexAlignEnd              {align-items: flex-end;}
+.flexAlignStretch          {align-items: stretch;}
+.flexAlignBaseline         {align-items: baseline;}
+/* flex-grow */
+.flexGrow                  {flex-grow: 1;}
+
+/* sizing divs */
+.fillWidth                 {width: 100%;}
+.fillHeight                {height: 100%;}
+.hugHeight                 {height: fit-content;}
+.hugWidth                  {width: fit-content;}
+
+/* spacings */
+.padding                   {padding: 1em;}
+.paddingHalf               {padding: 0.5em;}
+.margin                    {margin: 1em;}
+
+/* visibility */
+.hide                      {display: none;}
+.fadeOut                   {opacity: 0;}
+
+/* layering over */
+.overlay                   {position: absolute;top: 0;left: 0;}
+
+
+/* root styling */
+html{
+  height: 100%; width: 100%;
+  display: flex; justify-content: center;
+}
+body{
+  width: 100%;
+  max-width: 1000px;
+}

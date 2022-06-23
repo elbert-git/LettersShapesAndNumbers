@@ -3,7 +3,7 @@ import secret from '../../secret.json';
 
 // get contract abi
 const contractAbi =  require('./contractAbi');
-const contractAddress = '0x9D4d4A3695944cC68c796B9044cD3dE9fEebFcaf';
+const contractAddress = '0x1a0b59820576E229baEe0291E1a01657fd7bfeD4';
 
 class Contract{
   constructor(){
@@ -12,6 +12,17 @@ class Contract{
     // vars
     this.web3 = null;
     this.contract = null;
+     
+    //contract variables
+    this.contractVariables = {
+      totalSupply : null,
+      supplyMinted : null,
+      supplyLeft : null,
+      whiteListMintsLeft : null
+    }
+     
+    // on update contract
+    this.onUpdateContractVar = null;
   }
   async init(provider){
     // init web3
@@ -20,6 +31,23 @@ class Contract{
     const contract = await new this.web3.eth.Contract(contractAbi, contractAddress);
     this.contract = contract;
     console.log(contract);
+  }
+   
+  async getContractVariables(){
+    const totalSupply = 18;
+    const supplyMinted = await this.contract.methods.totalSupply().call();
+    const supplyLeft = 18 - supplyMinted;
+    const whiteListMintsLeft = supplyLeft - 9 - supplyMinted;
+    const obj = {
+      totalSupply : 18,
+      supplyMinted : supplyMinted,
+      supplyLeft : supplyLeft,
+      whiteListMintsLeft : whiteListMintsLeft,
+      isWhiteListing : whiteListMintsLeft > 0 ? true : false
+    }
+    if(obj.whiteListMintsLeft < 1){obj.whiteListMintsLeft = 0}
+    this.contractVariables = obj;
+    if(this.onUpdateContractVar != null){this.onUpdateContractVar(this.contractVariables)}
   }
 }
 
@@ -33,7 +61,7 @@ export const getContractObj = async function(){
     await contract.init(window.ethereum);
   }else{ // use infura to initialise
     console.log('metamask not found. using infura');
-    await contract.init(secret.mainNet);
+    await contract.init(secret.rinkeby);
   }
   return contract;
 }

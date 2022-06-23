@@ -15,15 +15,26 @@ let contract;
 export default function RootContext({children}) {
   // --- states
   const [loading, setLoading] = useState(false);
+  const [contractVars, setContractVars] = useState({});
+  const [currentWallet, setCurrentWallet] = useState(null);
   // --- context data
-  const contextData = {data: null};
+  const contextData = {
+    currentAddress: null,
+    contractVars: contractVars,
+    walletModule: wallet,
+    walletAddress: currentWallet,
+  };
    
   // --- load start up modules before rendering stuff
   useEffect(()=>{
     const load = async function(){
       /// load start up modules
       wallet = await getWalletObj();
+      wallet.onWalletConnectionChanged = setCurrentWallet;
       contract = await getContractObj();
+      // get contract vars
+      contract.onUpdateContractVar = setContractVars;
+      await contract.getContractVariables();
       setLoading(true);
     }
     load();
@@ -31,9 +42,9 @@ export default function RootContext({children}) {
    
 
   return (
-    <div className="App" value={contextData}>
+    <rootContext.Provider className="App" value={contextData}>
       {loading ? children : <InitialLoading/>}
-    </div>
+    </rootContext.Provider>
   );
 }
 

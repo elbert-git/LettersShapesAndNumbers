@@ -233,32 +233,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "getMaxMints",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getPrice",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -288,6 +262,11 @@
 				"internalType": "uint256",
 				"name": "quantity",
 				"type": "uint256"
+			},
+			{
+				"internalType": "bytes32[]",
+				"name": "proof",
+				"type": "bytes32[]"
 			}
 		],
 		"name": "mint",
@@ -303,19 +282,6 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "mintsLeft",
-		"outputs": [
-			{
-				"internalType": "int256",
-				"name": "",
-				"type": "int256"
 			}
 		],
 		"stateMutability": "view",
@@ -369,19 +335,6 @@
 	{
 		"inputs": [],
 		"name": "renounceOwnership",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "bool",
-				"name": "toReveal",
-				"type": "bool"
-			}
-		],
-		"name": "reveal",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -458,12 +411,12 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "newMax",
-				"type": "uint256"
+				"internalType": "bytes32",
+				"name": "_root",
+				"type": "bytes32"
 			}
 		],
-		"name": "setMaxMints",
+		"name": "setMerkleTreeRoot",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -472,11 +425,11 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "newPrice",
+				"name": "_mintRate",
 				"type": "uint256"
 			}
 		],
-		"name": "setPrice",
+		"name": "setMintRate",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -484,27 +437,27 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "newNum",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "_uri",
+				"type": "string"
 			}
 		],
-		"name": "setTriggerNumber",
+		"name": "setURI",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "supplyHasFinished",
-		"outputs": [
+		"inputs": [
 			{
 				"internalType": "bool",
-				"name": "",
+				"name": "_mode",
 				"type": "bool"
 			}
 		],
-		"stateMutability": "view",
+		"name": "setWhitelistMode",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{

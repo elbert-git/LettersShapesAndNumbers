@@ -17,7 +17,7 @@ export class Wallet{
       // set this object account
       this.currentAddress = wallet[0];
       // call on wallwallet change fucntion
-      if(this.onWalletConnectionChanged != null){
+      if(this.onWalletConnectionChanged !== null){
         this.onWalletConnectionChanged(this.currentAddress);
       }
     });
@@ -29,8 +29,8 @@ export class Wallet{
     const address = await window.ethereum.request({method: 'eth_requestAccounts'});
     this.walletConnected = (address[0] != null) ? true : false;
     this.currentAddress = address[0];
-    if(this.onWalletStatusChanged != null){
-    this.onWalletConnectionChanged(this.currentAddress);
+    if(this.onWalletStatusChanged !== null){
+      this.onWalletConnectionChanged(this.currentAddress);
     }
   }
 }
